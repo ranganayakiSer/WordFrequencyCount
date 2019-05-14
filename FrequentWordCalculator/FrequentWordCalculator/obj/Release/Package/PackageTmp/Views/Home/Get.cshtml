@@ -1,0 +1,56 @@
+﻿@model List<WordFrequencyCount>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Get</title>
+    <style>
+        a {
+            color: blue;
+        }
+
+        td, th {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="@Url.Action("Index", "Home")" style="color:green; font-size:14pt;">Upload New File</a>
+    </div>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Local FilePath</th>
+                    <th>Most Frequent Word</th>
+
+                    <th>Most Frequent 7 Character Word</th>
+
+                    <th>Highest scoring word(s) (according to Scrabble)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (WordFrequencyCount WordFrequencyCountObj in Model)
+                {
+                    <tr>
+                        <td>@WordFrequencyCountObj.localFilePath </td>
+                        <td>@WordFrequencyCountObj.mostFrequentWord </td>
+
+                        <td>@WordFrequencyCountObj.mostFrequentSevenCharacterWord  </td>
+
+                        <td>@WordFrequencyCountObj.highScoreScrabblerWord  </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
